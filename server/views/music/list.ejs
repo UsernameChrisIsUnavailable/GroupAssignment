@@ -1,0 +1,52 @@
+<%- include ../partials/header.ejs %>
+<%- include ../partials/top_nav.ejs %>
+<!--Main content-->
+<main>
+    <div class ="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-10">
+                <h1><%= title %></h1>
+                <a href="/musiclist/add" class="btn btn-primary" role ="button">
+                    <i class="fas fa-plus-circle"></i> Add Song </a>
+                <br>
+                <br>
+        <table class="table table-bordered table-striped table-hover">
+        <tr class="d-flex">
+            <th class="text-center col-2">Song</th>  
+            <th class="text-center col-2">Artist</th>   
+            <th class="text-center col-1">Year</th>   
+            <th class="text-center col-2">Genre</th>   
+            <th class="text-center col-1">Rating</th>   
+            <th class="text-center col-1"></th>  
+            <th class="text-center col-1"></th>  
+        </tr>
+
+        <!--repeats the template-->
+        <% for(let count=0; count<Musiclist.length; count++) { %>
+            <tr class = "d-flex">
+                <td class="text-center col-2"><%= Musiclist[count].Song %></td>
+                <td class="text-center col-2"><%= Musiclist[count].Artist %></td>
+                <td class="text-center col-1"><%= Musiclist[count].Year %></td>
+                <td class="text-center col-2"><%= Musiclist[count].Genre %></td>
+                <td class="text-center col-1"><%= Musiclist[count].Rating %></td>
+                <td class="text-center col-1">
+                    <a href="/musiclist/edit/<%= Musiclist[count]._id %>"
+                        class="btn btn-primary">
+                        <i class="fas fa-pencil-alt"></i> Edit </a>
+                </td>
+                <td class="text-center col-1">
+                    <a href="/musiclist/delete/<%= Musiclist[count]._id %>"
+                        class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete </a>
+                </td>
+            </tr>
+        <%} %>
+    </table>
+    </div>
+
+</main>
+
+<%- include ../partials/bot_nav.ejs %>
+  
+</body>
+</html>
