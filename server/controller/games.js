@@ -24,14 +24,16 @@ module.exports.displayGamesList = (req,res,next)=>{
 }
 
 module.exports.displayAddPage =(req,res,next)=>{
-    res.render('game/add',{title:'Add Game'})
+    res.render('games/add',{title:'Add Game'})
 }
 module.exports.processAddPage = (req,res,next)=>{
     let newGame = Games ({
         "Name":req.body.Name,
         "Year":req.body.Year,
-        "Genre":req.body.Genre,
-        "Rating":req.body.Rating
+        "Review":req.body.Review,
+        "Description":req.body.Description,
+        "Rating":req.body.Rating,
+        "Price":req.body.Price
     })
     Games.create(newGame,(err,Games) =>{
         if(err)
@@ -63,12 +65,14 @@ module.exports.displayEditPage=(req,res,next)=>{
 
 module.exports.processEditPage=(req,res,next)=>{
     let id=req.params.id;
-    let updateGame = Games({
+    let updateGames = Games({
         "_id":id,
         "Name":req.body.Name,
         "Year":req.body.Year,
-        "Genre":req.body.Genre,
-        "Rating":req.body.Rating
+        "Review":req.body.Review,
+        "Description":req.body.Description,
+        "Rating":req.body.Rating,
+        "Price":req.body.Price
     })
     Games.updateOne({_id:id},updateGames,(err)=>{
         if(err)

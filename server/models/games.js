@@ -1,10 +1,12 @@
 let mongoose = require('mongoose');
-//create music model
+//create games model
 let gamesModel = mongoose.Schema({
-    Song: String,
-    Year: String,
-    Genre: String,
-    Rating: String
+    Name: String,
+    Year: Number,
+    Review: String,
+    Description: String,
+    Rating: String,
+    Price: Number
 },
 {
     collection: "games"

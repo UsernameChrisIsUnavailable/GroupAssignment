@@ -12,10 +12,12 @@
                 <br>
         <table class="table table-bordered table-striped table-hover">
         <tr class="d-flex">
-            <th class="text-center col-2">Game</th>   
+            <th class="text-center col-1">Name</th>   
             <th class="text-center col-1">Year</th>   
-            <th class="text-center col-2">Genre</th>   
-            <th class="text-center col-1">Rating</th>   
+            <th class="text-center col-3">Review</th>   
+            <th class="text-center col-3">Description</th> 
+            <th class="text-center col-1">Rating</th>
+            <th class="text-center col-1">Price</th>  
             <th class="text-center col-1"></th>  
             <th class="text-center col-1"></th>  
         </tr>
@@ -23,10 +25,12 @@
         <!--repeats the template-->
         <% for(let count=0; count<Gameslist.length; count++) { %>
             <tr class = "d-flex">
-                <td class="text-center col-2"><%= Gameslist[count].Song %></td>
+                <td class="text-center col-1"><%= Gameslist[count].Name %></td>
                 <td class="text-center col-1"><%= Gameslist[count].Year %></td>
-                <td class="text-center col-2"><%= Gameslist[count].Genre %></td>
+                <td class="text-center col-3"><%= Gameslist[count].Review %></td>
+                <td class="text-center col-3"><%= Gameslist[count].Description %></td>
                 <td class="text-center col-1"><%= Gameslist[count].Rating %></td>
+                <td class="text-center col-1"><%= Gameslist[count].Price %></td>
                 <td class="text-center col-1">
                     <a href="/gameslist/edit/<%= Gameslist[count]._id %>"
                         class="btn btn-primary">

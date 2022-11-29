@@ -8,8 +8,8 @@
         <h1><%=title%></h1>           
             <form class="form" method="POST">
 
-                <div class="form-group">
-                    <label for="nameTextField">Game</label>
+            <div class="form-group">
+                    <label for="nameTextField">Name</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
                     placeholder="Enter the Game Name"
@@ -29,12 +29,22 @@
              </div>
 
              <div class="form-group">
-                <label for="genreTextField">Genre</label>
+                <label for="reviewTextField">Review</label>
                 <input type="text" class="form-control"
-                id="genreTextField"
-                placeholder="Enter the Song Genre"
-                name="Genre" 
-                value="<%= games.Genre %>"
+                id="reviewTextField"
+                placeholder="Enter your Review"
+                name="Review" 
+                value="<%= games.Review %>"
+                required>
+            </div>
+
+            <div class="form-group">
+                <label for="descriptionTextField">Description</label>
+                <input type="text" class="form-control"
+                id="descriptionTextField"
+                placeholder="Enter the description"
+                name="Description" 
+                value="<%= games.Description %>"
                 required>
             </div>
 
@@ -42,9 +52,18 @@
                 <label for="ratingTextField">Rating</label>
                 <input type="number" class="form-control"
                 id="ratingTextField"
-                placeholder="Enter your Song Rating"
+                placeholder="Enter your Rating"
                 name="Rating" 
                 value="<%= games.Rating %>"
+                required>
+            </div>
+            <div class="form-group">
+                <label for="priceTextField">Price</label>
+                <input type="number" class="form-control"
+                id="priceTextField"
+                placeholder="Enter the game price"
+                name="Price" 
+                value="<%= games.Price %>"
                 required>
             </div>
 
