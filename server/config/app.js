@@ -19,7 +19,7 @@ mongoDB.once('open', ()=> {
 
 
 let indexRouter = require('../routes/index');
-let musicRouter = require('../routes/music');
+let musicRouter = require('../routes/games');
 
 let app = express();
 
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 app.use('/', indexRouter); 
-app.use('/musiclist', musicRouter); 
+app.use('/gameslist', musicRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

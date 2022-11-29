@@ -1,7 +1,7 @@
 <%- include ../partials/header.ejs %>
 <%- include ../partials/top_nav.ejs %>
 
-<!--Content for the edit page-->
+<!--Content for the add page-->
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
@@ -9,33 +9,19 @@
             <form class="form" method="POST">
 
                 <div class="form-group">
-                    <label for="songTextField">Song</label>
+                    <label for="nameTextField">Game</label>
                     <input type="text" class="form-control"
-                    id="songTextField"
-                    placeholder="Enter the Song Name"
-                    name="Song" 
-                    value="<%= music.Song %>"
-                    required>
+                    id="nameTextField"
+                    placeholder="Enter the Game Name"
+                    name="Name" required>
                  </div>
-
-            <div class="form-group">
-                    <label for="artistTextField">Artist</label>
-                    <input type="text" class="form-control"
-                    id="artistTextField"
-                    placeholder="Enter the Artist Name"
-                    name="Artist" 
-                    value="<%= music.Artist %>"
-                    required>
-            </div>
 
             <div class="form-group">
                 <label for="yearTextField">Year</label>
                 <input type="number" class="form-control"
                 id="yearTextField"
                 placeholder="Enter the Year of Release"
-                name="Year" 
-                value="<%= music.Year %>"
-                required>
+                name="Year" required>
              </div>
 
              <div class="form-group">
@@ -43,9 +29,7 @@
                 <input type="text" class="form-control"
                 id="genreTextField"
                 placeholder="Enter the Song Genre"
-                name="Genre" 
-                value="<%= music.Genre %>"
-                required>
+                name="Genre" required>
             </div>
 
             <div class="form-group">
@@ -53,16 +37,14 @@
                 <input type="number" class="form-control"
                 id="ratingTextField"
                 placeholder="Enter your Song Rating"
-                name="Rating" 
-                value="<%= music.Rating %>"
-                required>
+                name="Rating" required>
             </div>
 
             <button class="btn-btn-primary" type="submit">
                 <i class="fas fa-edit"></i> Submit
             </button>
 
-            <a href="/musiclist" class="btn btn-warning">
+            <a href="/gameslist" class="btn btn-warning">
                 <i class="fas fa-undo"></i>Cancel</a>
 
         </div>

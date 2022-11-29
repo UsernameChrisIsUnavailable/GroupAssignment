@@ -1,40 +1,39 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-const music = require('../models/music');
+const music = require('../models/games');
 
-//connect with musicModel
+//connect with GamesModel
 
-let Music = require('../models/music');
+let Games = require('../models/games');
 
 module.exports.displayMusicList = (req,res,next)=>{
-    Music.find((err, Musiclist)=>{
+    Games.find((err, Gameslist)=>{
         if(err)
         {
             return console.error(err);
         }
         else
         {
-            res.render('music/list',{
-                title:'music', 
-                Musiclist: Musiclist
+            res.render('games/list',{
+                title:'games', 
+                Gameslist: Gameslist
             })
         }
     });
 }
 
 module.exports.displayAddPage =(req,res,next)=>{
-    res.render('music/add',{title:'Add Song'})
+    res.render('game/add',{title:'Add Game'})
 }
 module.exports.processAddPage = (req,res,next)=>{
-    let newSong = Music ({
-        "Song":req.body.Song,
-        "Artist":req.body.Artist,
+    let newGame = Games ({
+        "Name":req.body.Name,
         "Year":req.body.Year,
         "Genre":req.body.Genre,
         "Rating":req.body.Rating
     })
-    Music.create(newSong,(err,Music) =>{
+    Games.create(newGame,(err,Games) =>{
         if(err)
         {
             console.log(err);
@@ -42,14 +41,14 @@ module.exports.processAddPage = (req,res,next)=>{
         }
         else
         {
-            res.redirect('/musiclist');
+            res.redirect('/gameslist');
         }
     })
 }
 
 module.exports.displayEditPage=(req,res,next)=>{
     let id = req.params.id;
-    Music.findById(id, (err,musicToEdit) =>{
+    Games.findById(id, (err,gameToEdit) =>{
         if(err)
         {
             console.log(err);
@@ -57,22 +56,21 @@ module.exports.displayEditPage=(req,res,next)=>{
         }
         else
         {
-            res.render('music/edit', {title:'Edit Song',music:musicToEdit});
+            res.render('games/edit', {title:'Edit game',games:gameToEdit});
         }
     })
 }
 
 module.exports.processEditPage=(req,res,next)=>{
     let id=req.params.id;
-    let updateSong = Music({
+    let updateGame = Games({
         "_id":id,
-        "Song":req.body.Song,
-        "Artist":req.body.Artist,
+        "Name":req.body.Name,
         "Year":req.body.Year,
         "Genre":req.body.Genre,
         "Rating":req.body.Rating
     })
-    Music.updateOne({_id:id},updateSong,(err)=>{
+    Games.updateOne({_id:id},updateGames,(err)=>{
         if(err)
         {
             console.log(err);
@@ -80,14 +78,14 @@ module.exports.processEditPage=(req,res,next)=>{
         }
         else
         {
-            res.redirect('/musiclist');
+            res.redirect('/gameslist');
         }
     })
 }
 
 module.exports.performDelete=(req,res,next)=>{
     let id=req.params.id;
-    Music.deleteOne({_id:id},(err)=>{
+    Games.deleteOne({_id:id},(err)=>{
         if(err)
         {
             console.log(err);
@@ -95,7 +93,7 @@ module.exports.performDelete=(req,res,next)=>{
         }
         else
         {
-            res.redirect('/musiclist');
+            res.redirect('/gameslist');
         }
     })
 }
