@@ -7,7 +7,7 @@ const music = require('../models/games');
 
 let Games = require('../models/games');
 
-module.exports.displayMusicList = (req,res,next)=>{
+module.exports.displayGamesList = (req,res,next)=>{
     Games.find((err, Gameslist)=>{
         if(err)
         {
