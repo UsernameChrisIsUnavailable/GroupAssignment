@@ -5,6 +5,14 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+//configures authentication packages
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require(connect-flash);
+
+
 //config mongoDB
 let mongoose = require('mongoose');
 let DB = require('./db');
@@ -17,6 +25,18 @@ mongoDB.once('open', ()=> {
   console.log('connected to the mongoDB');
 });
 
+//set up express session
+app.use(session({
+  secret:"SomeSecret",
+  saveUninitialized:false,
+  resave:false
+}))
+
+//initialize flash
+app.use(flash());
+
+//initialize passport
+app.use(passport.initialize());
 
 let indexRouter = require('../routes/index');
 let musicRouter = require('../routes/games');
