@@ -10,7 +10,12 @@ let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
-let flash = require(connect-flash);
+let flash = require('connect-flash');
+let app = express();
+
+//create a user model instance
+let userModel = require('../models/user');
+let user = userModel.User;
 
 //config mongoDB
 let mongoose = require('mongoose');
@@ -31,25 +36,20 @@ app.use(session({
   resave:false
 }))
 
-//initialize flash
-app.use(flash());
+//serialize and deserialize the user information
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-//create a user model instance
-let userModel = require('../models/user');
-let user = userModel.User;
-
-//serialize and deserialize the user information
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
+//initialize flash
+app.use(flash());
 
 let indexRouter = require('../routes/index');
 let musicRouter = require('../routes/games');
 
-let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
