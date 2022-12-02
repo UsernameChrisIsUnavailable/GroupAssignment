@@ -12,7 +12,6 @@ let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require(connect-flash);
 
-
 //config mongoDB
 let mongoose = require('mongoose');
 let DB = require('./db');
@@ -37,6 +36,15 @@ app.use(flash());
 
 //initialize passport
 app.use(passport.initialize());
+app.use(passport.session());
+
+//create a user model instance
+let userModel = require('../models/user');
+let user = userModel.User;
+
+//serialize and deserialize the user information
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 let indexRouter = require('../routes/index');
 let musicRouter = require('../routes/games');
