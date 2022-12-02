@@ -49,6 +49,7 @@ app.use(flash());
 
 let indexRouter = require('../routes/index');
 let musicRouter = require('../routes/games');
+let userRouter = require('../routes/user');
 
 
 // view engine setup
