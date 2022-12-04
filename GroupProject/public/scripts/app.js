@@ -13,7 +13,7 @@
             if(!confirm("Are you Sure?"))
             {
                 event.prevent.Default();
-                window.location.assign('/musiclist');
+                window.location.assign('/gameslist');
             }
         })
     }
