@@ -1,5 +1,6 @@
 let express = require('express');
 let router = express.Router();
+<<<<<<< HEAD
 let userModel = require('../models/user');
 let user = userModel.user;
 
@@ -90,3 +91,10 @@ module.exports.performLogout = (req, res, next) =>
     req.logout();
     res.redirect('/')
   }
+=======
+
+module.exports.displayHomePage = (req,res,next)=>{
+        res.render('index', { title: 'Home'
+      });
+    }
+>>>>>>> db45015ce5d5859cf66e63c2c92aad0f96eebccb
