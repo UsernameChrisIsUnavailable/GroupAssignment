@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿# GroupAssignment
 Group 16
 Christopher Niemela 100785015
@@ -7,7 +6,6 @@ Patrick grayhurst 100825347
 Simra Imran 100791755
 
 Code was worked on collectively on visual studio live, meaning all work was done from one system. So all commits were done from one computer although worked on collectively.
-=======
 ﻿# GroupAssignment
 Group 16
 Christopher Niemela 100785015
@@ -16,4 +14,3 @@ Patrick grayhurst 100825347
 Simra Imran 100791755
 
 Code was worked on collectively on visual studio live, meaning all work was done from one system. So all commits were done from one computer although worked on collectively.
->>>>>>> db45015ce5d5859cf66e63c2c92aad0f96eebccb
