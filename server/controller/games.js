@@ -7,6 +7,11 @@ const music = require('../models/games');
 
 let Games = require('../models/games');
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b58d3840a8d567d73421aa7dc76c784f6294e22a
 module.exports.displayGamesList = (req,res,next)=>{
     Games.find((err, Gameslist)=>{
         if(err)
@@ -17,14 +22,17 @@ module.exports.displayGamesList = (req,res,next)=>{
         {
             res.render('games/list',{
                 title:'games', 
-                Gameslist: Gameslist
+                Gameslist: Gameslist,
+                displayName: req.user ? req.user.displayName: ''
             })
         }
     });
 }
 
 module.exports.displayAddPage =(req,res,next)=>{
-    res.render('games/add',{title:'Add Game'})
+    res.render('games/add',{
+        title:'Add Game',
+        displayName: req.user ? req.user.displayName: ''})
 }
 module.exports.processAddPage = (req,res,next)=>{
     let newGame = Games ({
@@ -58,7 +66,9 @@ module.exports.displayEditPage=(req,res,next)=>{
         }
         else
         {
-            res.render('games/edit', {title:'Edit game',games:gameToEdit});
+            res.render('games/edit', {title:'Edit game',
+            games:gameToEdit,
+            displayName: req.user ? req.user.displayName: ''});
         }
     })
 }
