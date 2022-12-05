@@ -1,13 +1,11 @@
 let express = require('express');
 let router = express.Router();
-
 let userModel = require('../models/user');
 let user = userModel.user;
 
 module.exports.displayHomePage = (req, res, next) => {
   res.render('index', {
-    title: 'Home',
-    displayName: req.user ? req.user.displayName: ''
+    title: 'Home'
   });
 }
 
@@ -18,6 +16,7 @@ module.exports.displayLoginPage = (req, res, next) => {
       title: 'Login',
       messag: req.flash('loginMessage'),
       displayName: req.user ? req.user.displayName : ''
+
     })
   }
   else {
@@ -88,17 +87,6 @@ module.exports.processRegisterPage = (req, res, next) => {
 
 module.exports.performLogout = (req, res, next) => 
   {
-    req.logout(function(err){
-      if(err){
-        return next(err);
-      }
-    });
+    req.logout();
     res.redirect('/')
   }
-
-
-module.exports.displayHomePage = (req,res,next)=>{
-        res.render('index', { title: 'Home'
-      });
-    }
-
